@@ -1,0 +1,121 @@
+<template>
+  <div class="container">
+    <uni-swiper-dot
+      class="uni-swiper-dot-box"
+      mode="round"
+      field="content"
+      :info="bannerArr"
+      :dots-styles="{
+        backgroundColor: 'rgba(0, 0, 0, .3)',
+        border: '1px rgba(0, 0, 0, .3) solid',
+        color: '#fff',
+        selectedBackgroundColor: 'rgba(0, 0, 0, .9)',
+        selectedBorder: '1px rgba(0, 0, 0, .9) solid',
+      }"
+      :current="currentSwiperItem"
+      @clickItem="clickDotItem"
+    >
+      <swiper class="swiper-box" @change="changeSwiperItem" :current="currentSwiperItem">
+        <swiper-item v-for="(item, index) in bannerArr" :key="index">
+          <image class="swiper-item" :src="item" />
+        </swiper-item>
+      </swiper>
+    </uni-swiper-dot>
+    <div class="btn-wrapper">
+      <div class="btn btn-1" @click="goAppointementPage">
+        <div class="text">
+          我要预约 <image class="icon" src="@/assets/images/item_more.png" />
+        </div>
+      </div>
+      <div class="btn btn-2" @click="goAppointementListPage">
+        <div class="text">
+          预约记录 <image class="icon" src="@/assets/images/item_more.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+  import { ref } from 'vue';
+
+  const bannerArr = [
+    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
+  ];
+
+  const currentSwiperItem = ref(0);
+
+  function goAppointementPage() {
+    // uni.navigateTo({ url: '/pages/appointement/insertAppointement/index' });
+  }
+
+  function goAppointementListPage() {
+    uni.navigateTo({ url: '/pages/appointement/appointementList/index' });
+  }
+
+  function clickDotItem(index: number) {
+    currentSwiperItem.value = index;
+  }
+
+  function changeSwiperItem(e: any) {
+    currentSwiperItem.value = e.detail.current;
+  }
+</script>
+
+<style lang="scss" scoped>
+  .container {
+    padding: 10px;
+
+    .uni-swiper-dot-box {
+      border-radius: 10px;
+    }
+
+    .swiper-box {
+      height: 150px;
+
+      .swiper-item {
+        width: 100%;
+        height: 150px;
+      }
+    }
+
+    .btn-wrapper {
+      display: flex;
+      padding: 10px 0;
+
+      .btn {
+        width: 50%;
+        padding: 10px;
+        border-radius: 8px;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &.btn-1 {
+          background-image: url('@/assets/images/x1.png');
+        }
+
+        &.btn-2 {
+          margin-left: 10px;
+          background-image: url('@/assets/images/x2.png');
+        }
+
+        .text {
+          display: flex;
+          align-items: center;
+          color: #fff;
+          font-size: 36rpx;
+          font-weight: bold;
+
+          .icon {
+            width: 30rpx;
+            height: 30rpx;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+</style>

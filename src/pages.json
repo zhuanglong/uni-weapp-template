@@ -1,0 +1,40 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "uni-app-home"
+      }
+    },
+    {
+      "path": "pages/uview/index",
+      "style": {
+        "navigationBarTitleText": "uView 示例组件"
+      }
+    },
+    {
+      "path": "pages/unocss/index",
+      "style": {
+        "navigationBarTitleText": "UnoCSS 示例"
+      }
+    },
+    {
+      "path": "pages/appointement/appointementList/index",
+      "style": {
+        "navigationBarTitleText": "预约记录"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "easycom": {
+    "custom": {
+      "^u-(.*)": "vk-uview-ui/components/u-$1/u-$1.vue",
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  }
+}
