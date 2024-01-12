@@ -1,18 +1,25 @@
-// const Mock =
-//   process.env.TARO_ENV === 'h5' ? require('better-mock') : require('better-mock/dist/mock.mp.js');
-// const Mock = require('better-mock');
+// @ts-ignore
+// #ifdef H5
+import Mock from 'better-mock';
+// #endif
+// @ts-ignore
+// #ifndef H5
 import Mock from 'better-mock/dist/mock.mp.js';
+// #endif
 
-import { resultSuccess } from './_util';
 import { sleep } from '@/utils';
+import { getAppInfo } from '@/utils/config';
+import { resultSuccess } from './_util';
+
+const { apiPrefix } = getAppInfo();
 
 export default {
-  '/dev-api/appointement/insert': (timeout: number) => {
+  [`${apiPrefix}/appointement/insert`]: (timeout: number) => {
     return sleep(timeout).then(() => {
       return resultSuccess(null);
     });
   },
-  '/dev-api/appointement/list': (timeout: number) => {
+  [`${apiPrefix}/appointement/list`]: (timeout: number) => {
     return sleep(timeout).then(() => {
       return resultSuccess(
         Mock.mock({

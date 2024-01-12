@@ -8,6 +8,9 @@ declare module '*.vue' {
 }
 
 interface ImportMetaEnv {
-  VITE_APP_TITLE: string;
-  VITE_APP_AXIOS_BASE_URL: string;
+  // .env.xx 全局环境变量
+  VITE_APP_ENV: 'dev' | 'prod' | 'staging' | 'analyze';
+  VITE_APP_NAME: string;
+  VITE_API_PREFIX: string;
+  VITE_USEMOCK: 'true' | 'false';
 }

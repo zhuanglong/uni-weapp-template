@@ -1,9 +1,8 @@
 import { httpClient, ApiResult } from '@/utils/request';
-// import { getAppInfo, useMock } from '@/utils/config';
+import { getAppInfo, useMock } from '@/utils/config';
 import appointementMock from '@/mock/appointement';
 
-// const { apiPrefix } = getAppInfo();
-const apiPrefix = '/dev-api';
+const { apiPrefix } = getAppInfo();
 
 export interface ResActivitySchedule {
   _id: string;
@@ -19,13 +18,11 @@ export interface ReqInsertAppointementInfo {
   scheduleId: string;
 }
 export function insertAppointementInfo(params: ReqInsertAppointementInfo) {
-  if (true) {
-    return appointementMock[`${apiPrefix}/appointement/insert`]() as Promise<ApiResult>;
+  const url = `${apiPrefix}/appointement/insert`;
+  if (useMock()) {
+    return appointementMock[url]() as Promise<ApiResult>;
   }
-  return httpClient.post<ApiResult>({
-    url: `${apiPrefix}/appointement/insert`,
-    data: params,
-  });
+  return httpClient.post<ApiResult>({ url, data: params });
 }
 
 export interface ResAppointementRecord {
@@ -34,12 +31,9 @@ export interface ResAppointementRecord {
   tel: string;
 }
 export function getAppointementRecord() {
-  if (true) {
-    return appointementMock[`${apiPrefix}/appointement/list`]() as Promise<
-      ApiResult<ResAppointementRecord[]>
-    >;
+  const url = `${apiPrefix}/appointement/list`;
+  if (useMock()) {
+    return appointementMock[url]() as Promise<ApiResult<ResAppointementRecord[]>>;
   }
-  return httpClient.post<ApiResult<ResAppointementRecord[]>>({
-    url: `${apiPrefix}/appointement/list`,
-  });
+  return httpClient.post<ApiResult<ResAppointementRecord[]>>({ url });
 }

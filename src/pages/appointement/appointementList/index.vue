@@ -29,19 +29,15 @@
   const fetchData = () => {
     isEmpty.value = false;
     loading.value = true;
-    getAppointementRecord()
-      .then((res) => {
-        loading.value = false;
-        if (res.code === 0) {
-          resData.value = res.data;
-        }
-        if (res.data.length === 0) {
-          isEmpty.value = true;
-        }
-      })
-      .catch(() => {
-        //
-      });
+    getAppointementRecord().then((res) => {
+      loading.value = false;
+      if (res.code === 0) {
+        resData.value = res.data;
+      }
+      if (res.data.length === 0) {
+        isEmpty.value = true;
+      }
+    });
   };
 
   const clickOperate = () => {
