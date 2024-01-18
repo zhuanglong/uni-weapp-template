@@ -15,6 +15,5 @@
 </script>
 
 <style lang="scss">
-  @import 'vk-uview-ui/index.scss';
   @import '@/styles/common.scss';
 </style>

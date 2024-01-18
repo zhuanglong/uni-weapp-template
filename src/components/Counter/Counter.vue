@@ -25,17 +25,17 @@
         evenOrOdd: computed(() => counter.evenOrOdd),
       });
 
-      const decrement = () => {
+      function decrement() {
         counter.decrement();
-      };
+      }
 
-      const increment = () => {
+      function increment() {
         counter.increment();
-      };
+      }
 
-      const incrementAsync = () => {
+      function incrementAsync() {
         counter.incrementAsync();
-      };
+      }
 
       return {
         ...toRefs(state),

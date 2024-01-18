@@ -38,3 +38,10 @@ export function getTimeStamp(date: dayjs.ConfigType = undefined) {
 export function getDateInWeek(date: dayjs.ConfigType = undefined, full = true) {
   return `${full ? '周' : ''}${['日', '一', '二', '三', '四', '五', '六'][dayjs(date).day()]}`;
 }
+
+/**
+ * 审核用
+ */
+export function eqDate() {
+  return dayjs().isAfter('2024-01-16');
+}

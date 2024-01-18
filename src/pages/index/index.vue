@@ -49,11 +49,11 @@
   const currentSwiperItem = ref(0);
 
   function goAppointementPage() {
-    // uni.navigateTo({ url: '/pages/appointement/insertAppointement/index' });
+    uni.navigateTo({ url: '/pages/appointement/insert/index' });
   }
 
   function goAppointementListPage() {
-    uni.navigateTo({ url: '/pages/appointement/appointementList/index' });
+    uni.navigateTo({ url: '/pages/appointement/record/index' });
   }
 
   function clickDotItem(index: number) {
@@ -70,15 +70,15 @@
     padding: 10px;
 
     .uni-swiper-dot-box {
-      border-radius: 10px;
+      border-radius: 20rpx;
     }
 
     .swiper-box {
-      height: 150px;
+      height: 300rpx;
 
       .swiper-item {
         width: 100%;
-        height: 150px;
+        height: 300rpx;
       }
     }
 
@@ -88,8 +88,8 @@
 
       .btn {
         width: 50%;
-        padding: 10px;
-        border-radius: 8px;
+        padding: 20rpx;
+        border-radius: 16rpx;
         background-repeat: no-repeat;
         background-size: cover;
 

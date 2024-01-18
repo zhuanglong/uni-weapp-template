@@ -2,12 +2,22 @@
   <view>
     <view class="safe-area-bottom" v-if="!isEmpty">
       <view class="list" v-if="loading">
-        <view>loading</view>
+        <Skeleton rows="3" :title="true" />
+        <Skeleton style="margin-top: 25px" rows="3" :title="true" />
+        <Skeleton style="margin-top: 25px" rows="3" :title="true" />
       </view>
       <view class="list" v-else>
         <view class="item" :key="item.name" v-for="item in resData">
           <view class="cell">姓名：{{ item.name }}</view>
           <view class="cell cell-tel">联系电话：{{ item.tel }}</view>
+          <div class="cell" style="display: flex">
+            <div>预约课程：</div>
+            <div>
+              <div>{{ item.scheduleInfo?.subject }}</div>
+              <div>{{ formatScheduleDate(item.scheduleInfo, true) }}</div>
+            </div>
+          </div>
+          <div class="cell">创建时间：{{ formatTime(item.created_at, 'YYYY-MM-DD HH:mm') }}</div>
         </view>
       </view>
     </view>
@@ -18,15 +28,29 @@
 <script lang="ts" setup>
   import { ref, onMounted } from 'vue';
 
+  import Skeleton from '@/components/Skeleton';
   import EmptyStatus from '@/components/EmptyStatus';
 
   import { type ResAppointementRecord, getAppointementRecord } from '@/api/appointementApi';
+  import { formatTime, getDateInWeek } from '@/utils/formatTime';
 
   const isEmpty = ref(false);
   const loading = ref(true);
   const resData = ref<ResAppointementRecord[]>([]);
 
-  const fetchData = () => {
+  function formatScheduleDate(rowData: ResAppointementRecord['scheduleInfo'], wrap = true) {
+    const md = formatTime(rowData.start_time, 'MM月DD日');
+    const startTime = formatTime(rowData.start_time, 'HH:mm');
+    const endTime = formatTime(rowData.end_time, 'HH:mm');
+    const week = getDateInWeek(rowData.start_time);
+    const content = `${md}\n(${week})\n${startTime}-${endTime}`;
+    if (wrap) {
+      return content;
+    }
+    return content.replace(/\n/g, '');
+  }
+
+  function fetchData() {
     isEmpty.value = false;
     loading.value = true;
     getAppointementRecord().then((res) => {
@@ -38,18 +62,18 @@
         isEmpty.value = true;
       }
     });
-  };
+  }
 
-  const clickOperate = () => {
+  function clickOperate() {
     fetchData();
-  };
+  }
 
   onMounted(() => {
     fetchData();
   });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .list {
     padding: 10px;
     padding-bottom: 20px;
