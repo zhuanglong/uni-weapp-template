@@ -2,9 +2,9 @@
   <view>
     <view class="safe-area-bottom" v-if="!isEmpty">
       <view class="list" v-if="loading">
-        <Skeleton rows="3" :title="true" />
-        <Skeleton style="margin-top: 25px" rows="3" :title="true" />
-        <Skeleton style="margin-top: 25px" rows="3" :title="true" />
+        <Skeleton rows="3" :title="false" />
+        <Skeleton customeStyle="margin-top: 20px" rows="3" :title="false" />
+        <Skeleton customeStyle="margin-top: 20px" rows="3" :title="false" />
       </view>
       <view class="list" v-else>
         <view class="item" :key="item.name" v-for="item in resData">
@@ -28,8 +28,8 @@
 <script lang="ts" setup>
   import { ref, onMounted } from 'vue';
 
-  import Skeleton from '@/components/Skeleton';
-  import EmptyStatus from '@/components/EmptyStatus';
+  import Skeleton from '@/components/Skeleton/index.vue';
+  import EmptyStatus from '@/components/EmptyStatus/index.vue';
 
   import { type ResAppointementRecord, getAppointementRecord } from '@/api/appointementApi';
   import { formatTime, getDateInWeek } from '@/utils/formatTime';

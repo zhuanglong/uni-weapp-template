@@ -65,7 +65,7 @@
     "better-mock": "^0.3.7",
     "cz-git": "^1.4.1",
     "dayjs": "^1.11.10",
-    "pinia": "^2.0.14",
+    "pinia": "2.0.23",
     "vue": "^3.2.45",
     "vue-i18n": "^9.1.10"
   },
@@ -80,6 +80,7 @@
     "@types/node": "^18.15.3",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
+    "@uni-helper/uni-ui-types": "^0.5.11",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vitest/ui": "^0.34.4",
     "c8": "^7.11.3",

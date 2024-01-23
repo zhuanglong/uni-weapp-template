@@ -17,7 +17,7 @@
     >
       <swiper class="swiper-box" @change="changeSwiperItem" :current="currentSwiperItem">
         <swiper-item v-for="(item, index) in bannerArr" :key="index">
-          <image class="swiper-item" :src="item" />
+          <image class="swiper-item" :src="item" mode="aspectFill" />
         </swiper-item>
       </swiper>
     </uni-swiper-dot>
@@ -39,14 +39,13 @@
 <script lang="ts" setup>
   import { ref } from 'vue';
 
-  const bannerArr = [
-    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
-  ];
+  import home_banner_1 from '@/assets/images/home_banner_1.jpg';
+  import home_banner_2 from '@/assets/images/home_banner_2.jpg';
+  import home_banner_3 from '@/assets/images/home_banner_3.jpg';
+  import home_banner_4 from '@/assets/images/home_banner_4.jpg';
 
   const currentSwiperItem = ref(0);
+  const bannerArr = [home_banner_1, home_banner_2, home_banner_3, home_banner_4];
 
   function goAppointementPage() {
     uni.navigateTo({ url: '/pages/appointement/insert/index' });
@@ -69,8 +68,10 @@
   .container {
     padding: 10px;
 
-    .uni-swiper-dot-box {
-      border-radius: 20rpx;
+    :deep() {
+      .uni-swiper__warp {
+        border-radius: 20rpx;
+      }
     }
 
     .swiper-box {

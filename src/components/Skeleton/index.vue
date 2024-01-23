@@ -1,5 +1,5 @@
 <template>
-  <view class="skeleton">
+  <view class="skeleton" :style="customeStyle">
     <view class="skeleton__wrapper" v-if="props.loading">
       <view
         class="skeleton__wrapper__avatar"
@@ -10,7 +10,7 @@
           width: addUnit(props.avatarSize),
         }"
       />
-      <view class="skeleton__wrapper__content" ref="uSkeletonWrapperContentRef" style="flex: 1">
+      <view class="skeleton__wrapper__content" style="flex: 1">
         <view
           class="skeleton__wrapper__content__title"
           v-if="props.title"
@@ -38,9 +38,21 @@
 </template>
 
 <script lang="ts" setup>
-  import { type PropType, type CSSProperties, watch, computed, ref, unref, onMounted } from 'vue';
+  import {
+    type PropType,
+    type CSSProperties,
+    watch,
+    computed,
+    ref,
+    unref,
+    onMounted,
+    getCurrentInstance,
+  } from 'vue';
 
   const props = defineProps({
+    customeStyle: {
+      type: [String, Object] as PropType<string | CSSProperties>,
+    },
     // 是否展示骨架组件
     loading: {
       type: Boolean as PropType<boolean>,
@@ -99,7 +111,6 @@
   });
 
   const width = ref(0);
-  const uSkeletonWrapperContentRef = ref();
 
   const rowsArray = computed(() => {
     const { title, rows, rowsWidth, rowsHeight } = props;
@@ -157,9 +168,16 @@
   }
 
   function getComponentWidth() {
-    setTimeout(() => {
-      width.value = uSkeletonWrapperContentRef.value?.$el?.offsetWidth || 0;
-    }, 20);
+    uni
+      .createSelectorQuery()
+      .in(getCurrentInstance())
+      .select('.skeleton__wrapper__content')
+      .boundingClientRect((rect) => {
+        if (!Array.isArray(rect)) {
+          width.value = rect.width || 0;
+        }
+      })
+      .exec();
   }
 
   watch(
