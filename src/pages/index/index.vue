@@ -60,6 +60,7 @@
   }
 
   function changeSwiperItem(e: any) {
+    // 哈哈
     currentSwiperItem.value = e.detail.current;
   }
 </script>
