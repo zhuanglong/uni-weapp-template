@@ -8,5 +8,3 @@ node_modules
 dist
 Dockerfile
 *.nvue
-types/svg-component-global.d.ts
-types/svg-component.d.ts
