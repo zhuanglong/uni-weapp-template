@@ -30,7 +30,7 @@ pnpm dev:mp-weixi
 pnpm build:mp-weixi
 
 # 预览
-下载并打开[微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)，然后选择 taro-weapp-template 项目根目录进行预览。
+下载并打开[微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)，然后选择 `uni-weapp-template\dist\dev\mp-weixin` 项目根目录进行预览。
 ```
 
 ## VSCode 插件
