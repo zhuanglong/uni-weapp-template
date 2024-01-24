@@ -33,6 +33,7 @@
         </div>
       </div>
     </div>
+    <SvgIcon name="hanbao" />
   </div>
 </template>
 
