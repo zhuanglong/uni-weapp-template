@@ -113,8 +113,8 @@
     tel: '',
     scheduleId: '',
   });
-
   const resData = ref({} as ResActivityChapter);
+
   const tableColumns = computed(() => {
     const res: TableColumnsPropType[] = [
       {

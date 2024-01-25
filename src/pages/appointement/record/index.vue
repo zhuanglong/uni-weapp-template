@@ -78,11 +78,6 @@
     padding: 10px;
     padding-bottom: 20px;
 
-    .nut-skeleton {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
     .item {
       padding: 10px;
       border-radius: 6px;
