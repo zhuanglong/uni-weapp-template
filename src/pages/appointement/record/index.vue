@@ -10,14 +10,14 @@
         <view class="item" :key="item.name" v-for="item in resData">
           <view class="cell">姓名：{{ item.name }}</view>
           <view class="cell cell-tel">联系电话：{{ item.tel }}</view>
-          <div class="cell" style="display: flex">
-            <div>预约课程：</div>
-            <div>
-              <div>{{ item.scheduleInfo?.subject }}</div>
-              <div>{{ formatScheduleDate(item.scheduleInfo, true) }}</div>
-            </div>
-          </div>
-          <div class="cell">创建时间：{{ formatTime(item.created_at, 'YYYY-MM-DD HH:mm') }}</div>
+          <view class="cell" style="display: flex">
+            <view>预约课程：</view>
+            <view>
+              <view>{{ item.scheduleInfo?.subject }}</view>
+              <view>{{ formatScheduleDate(item.scheduleInfo, true) }}</view>
+            </view>
+          </view>
+          <view class="cell">创建时间：{{ formatTime(item.created_at, 'YYYY-MM-DD HH:mm') }}</view>
         </view>
       </view>
     </view>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <view class="container">
     <uni-swiper-dot
       class="uni-swiper-dot-box"
       mode="round"
@@ -21,19 +21,19 @@
         </swiper-item>
       </swiper>
     </uni-swiper-dot>
-    <div class="btn-wrapper">
-      <div class="btn btn-1" @click="goAppointementPage">
-        <div class="text">
+    <view class="btn-wrapper">
+      <view class="btn btn-1" @click="goAppointementPage">
+        <view class="text">
           我要预约 <image class="icon" src="@/assets/images/item_more.png" />
-        </div>
-      </div>
-      <div class="btn btn-2" @click="goAppointementListPage">
-        <div class="text">
+        </view>
+      </view>
+      <view class="btn btn-2" @click="goAppointementListPage">
+        <view class="text">
           预约记录 <image class="icon" src="@/assets/images/item_more.png" />
-        </div>
-      </div>
-    </div>
-  </div>
+        </view>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script lang="ts" setup>

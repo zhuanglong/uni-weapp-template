@@ -12,10 +12,10 @@
         <button class="choice-btn" @click="visiblePopup(true)" v-if="!selectedScheduleInfo">
           选择课程
         </button>
-        <div v-else class="selected-schedule" @click="visiblePopup(true)">
-          <div>{{ (selectedScheduleInfo.subject || '').replace(/\n/g, '') }}</div>
-          <div>{{ formatScheduleDate(selectedScheduleInfo, false) }}</div>
-        </div>
+        <view v-else class="selected-schedule" @click="visiblePopup(true)">
+          <view>{{ (selectedScheduleInfo.subject || '').replace(/\n/g, '') }}</view>
+          <view>{{ formatScheduleDate(selectedScheduleInfo, false) }}</view>
+        </view>
       </uni-forms-item>
     </uni-forms>
     <button class="submit-btn" @click="submit">提交</button>
