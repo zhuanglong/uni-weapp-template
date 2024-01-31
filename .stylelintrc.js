@@ -21,7 +21,9 @@ module.exports = {
     'unit-no-unknown': [true, {
       ignoreUnits: ['rpx']
     }],
-    'selector-type-no-unknown': null,
+    'selector-type-no-unknown': [true, {
+      ignoreTypes: ['page']
+    }],
     'font-family-no-missing-generic-family-keyword': null,
     'import-notation': null,
     'comment-empty-line-before': null,
